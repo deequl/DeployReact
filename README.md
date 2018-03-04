@@ -20,12 +20,18 @@ This is a very important step we need to allow access to the service.
 * By default firewall is inactive, we can check it  
 ```html
 sudo ufw status
+```
+```html
 sudo ufw app list
 ```
 let's active and config firewall running this commands
 ```html
 sudo ufw allow 'Nginx Full'
+```
+```html
 sudo ufw allow 'OpenSSH'
+```
+```html
 sudo ufw enable
 ```
 to see ufw documentation use.  ```ufw COMMAND```
@@ -35,6 +41,8 @@ We are using Nodejs for backend and we will serve the static files of the react 
 We will use package management to install, here is command to install Node.js v9
 ```html
 curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
+```
+```html
 sudo apt-get install -y nodejs
 ```
 After successfully installing Node.js, we can check the version using ``` node -v ```
