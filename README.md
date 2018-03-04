@@ -1,5 +1,5 @@
 # DeployReact
-How to deploy a react app on Ubuntu x64 host
+How to deploy a react app on Ubuntu 16.04 host
 
 First we have to download [puttygen](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) and make publicKey and privateKey SSH to acces more secure to our server.
 Then save publicKey generated on .txt file and privateKey on .ppk file.
@@ -14,7 +14,7 @@ Now we will download [putty-installer](https://www.chiark.greenend.org.uk/~sgtat
 
 Now It's all ready to connect, click Open button
 
-## Configuring Host
+## Configuring host
 ### Firewall
 This is a very important step we need to allow access to the service.
 * By default firewall is inactive, we can check it  
@@ -38,4 +38,39 @@ curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
 sudo apt-get install -y nodejs
 ```
 After successfully installing Node.js, we can check the version using ``` node -v ```
-Visit [NodeJS](Visit https://nodejs.org/en/download/package-manager/) to see documentation.
+
+Visit [NodeJS](https://nodejs.org/en/download/package-manager/) to see documentation.
+
+### Setup MongoDB
+We can install mongoDB as a database following these commands:
+```html
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5
+```
+```html
+echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.6 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.6.list
+```
+```html
+sudo apt-get update
+```
+```html
+sudo apt-get install -y mongodb-org
+```
+```html
+sudo service mongod start
+```
+* Use ```sudo service mongod stop``` to stop MongoDB.
+* Use ```sudo service mongod restart``` to reload MongoDB.
+
+Visit [MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/) to see documentation.
+
+### Install Nginx - Http Proxy Server
+```html
+apt-get update
+```
+```html
+sudo apt-get install nginx
+```
+* Use ```nginx -s stop``` to stop nginx.
+* Use ```nginx -s reload``` to reload nginx.
+
+Visit [Nginx](http://nginx.org/en/linux_packages.html) to see documentation.
