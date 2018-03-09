@@ -82,3 +82,37 @@ sudo apt-get install nginx
 * Use ```nginx -s reload``` to reload nginx.
 
 Visit [Nginx](http://nginx.org/en/linux_packages.html) to see documentation.
+
+
+### Deployment
+We have to go from main directory of our server to /var/www using ```cd /var/www``` and create a new directory for our files ```mkdir mydomain.com```. Now go there and:
+```html
+git clone https://github.com/.. examplename
+```
+time to change nginx config file (default) going /etc/nginx/sites-enabled
+```html
+rm default
+```
+let's stop nginx now: ```sudo nginx -s stop``` and create a new file:
+```html
+vim mydomain.com.conf
+```
+There you have to copy this: (remember :wq)
+```html
+server {
+        listen 80;
+        root /var/www/html;
+        location / {
+
+
+                proxy_pass http://127.0.0.1:3001;
+                proxy_http_version 1.1;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection "upgrade";
+        }
+
+}
+```
+get back nginx ```sudo nginx```.
+
+The last step is start your application using ```node dist```. *That's it!*
