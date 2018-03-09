@@ -88,6 +88,8 @@ Visit [Nginx](http://nginx.org/en/linux_packages.html) to see documentation.
 We have to go from main directory of our server to /var/www using ```cd /var/www``` and create a new directory for our files ```mkdir mydomain.com```. Now go there and:
 ```html
 git clone https://github.com/.. examplename
+``````html
+npm install
 ```
 time to change nginx config file (default) going /etc/nginx/sites-enabled
 ```html
