@@ -118,3 +118,10 @@ server {
 get back nginx ```sudo nginx```.
 
 The last step is start your application using ```node dist```. *That's it!*
+
+### Persistent server
+```npm install -g pm2```
+run on root folder (mydomain.com)
+```pm2 start build```
+note that build is and optimized version of our application, to make it run ```npm run build```
+
